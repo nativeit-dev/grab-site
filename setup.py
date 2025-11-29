@@ -11,16 +11,23 @@ import libgrabsite
 
 install_requires = [
 	"click>=8.0",
-	"wpull @ https://github.com/ArchiveTeam/ludios_wpull/archive/refs/tags/3.0.9.zip",
 	"manhole>=1.8.0",
 	"lmdb>=1.3.0",
 	"autobahn>=22.7.1",
 	"google-re2>=1.0.6",
 	"websockets>=10.0",
+	"chardet>=3.0.0",
+	"dnspython",
+	"lxml",
+	"namedlist",
+	"sqlalchemy>=1.4.0,<2.0.0",
+	"tornado>=6.1",
+	"yapsy",
 ]
 
-if 'GRAB_SITE_NO_CCHARDET' not in os.environ:
-	install_requires.append("cchardet>=1.0.0")
+# Note: wpull dependency is not included in install_requires due to build issues on Windows
+# For Windows development, use Docker or WSL2 where wpull dependencies compile properly
+# For Docker: cd docker-grab-site && docker build -t grab-site:dev .
 
 setup(
 	name="grab-site",

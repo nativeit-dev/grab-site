@@ -10,19 +10,17 @@ import sys
 import libgrabsite
 
 install_requires = [
-	"click>=6.3",
+	"click>=8.0",
 	"wpull @ https://github.com/ArchiveTeam/ludios_wpull/archive/refs/tags/3.0.9.zip",
-	"manhole>=1.0.0",
-	"lmdb>=0.89",
-	"autobahn>=0.12.1",
+	"manhole>=1.8.0",
+	"lmdb>=1.3.0",
+	"autobahn>=22.7.1",
 	"google-re2>=1.0.6",
-	"websockets>=6.0",
-	"cython>=0.29.0",
-	"cchardet>=2.1.7",
+	"websockets>=10.0",
 ]
 
-#if 'GRAB_SITE_NO_CCHARDET' not in os.environ:
-#	install_requires.append("cchardet>1.0.0")
+if 'GRAB_SITE_NO_CCHARDET' not in os.environ:
+	install_requires.append("cchardet>=2.1.7")
 
 setup(
 	name="grab-site",
@@ -33,11 +31,16 @@ setup(
 	author_email="ivan@ludios.org",
 	classifiers=[
 		"Programming Language :: Python :: 3",
+		"Programming Language :: Python :: 3.8",
+		"Programming Language :: Python :: 3.9",
+		"Programming Language :: Python :: 3.10",
+		"Programming Language :: Python :: 3.11",
 		"Development Status :: 5 - Production/Stable",
 		"Intended Audience :: End Users/Desktop",
 		"License :: OSI Approved :: MIT License",
 		"Topic :: Internet :: WWW/HTTP",
 	],
+	python_requires='>=3.8',
 	scripts=["grab-site", "gs-server", "gs-dump-urls"],
 	packages=["libgrabsite"],
 	package_data={"libgrabsite": ["*.html", "*.ico", "*.txt", "ignore_sets/*"]},

@@ -17,10 +17,12 @@ install_requires = [
 	"autobahn>=0.12.1",
 	"google-re2>=1.0.6",
 	"websockets>=6.0",
+	"cython>=0.29.0",
+	"cchardet>=2.1.7",
 ]
 
-if 'GRAB_SITE_NO_CCHARDET' not in os.environ:
-	install_requires.append("cchardet>=1.0.0")
+#if 'GRAB_SITE_NO_CCHARDET' not in os.environ:
+#	install_requires.append("cchardet>1.0.0")
 
 setup(
 	name="grab-site",
